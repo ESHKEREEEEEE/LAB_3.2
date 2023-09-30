@@ -64,4 +64,10 @@ void shop_add_item(shop* shop_add_item) {
 	scanf("%d", &item_discount);
 	shop_add_item->items[shop_add_item->items_counter].discount = item_discount;
 	printf("\nДобавлен товар %s по цене %d со скидкой %d", item_name, item_price, item_discount);
+	shop_add_item->items_counter++;
 }
+
+void item_info(item* current_item) {
+	printf("%s по цене %d со скидкой %d", current_item->name, current_item->price, current_item->discount);
+}
+
