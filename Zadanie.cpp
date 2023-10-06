@@ -40,6 +40,5 @@ int main()
     sale_info(&sales[0]);
     delete_item(&sales[0], 0);
     delete_sale(&sales[0]);
-
 }
 

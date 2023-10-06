@@ -72,8 +72,9 @@ void add_item(shop* add_item) {
 	printf("Введите скидку ");
 	scanf("%d", &item_discount);
 	add_item->items[add_item->items_counter].discount = item_discount;
-	printf("\nДобавлен товар %s по цене %d со скидкой %d", item_name, item_price, item_discount);
+	printf("\nДобавлен товар %s по цене %d со скидкой %d\n", item_name, item_price, item_discount);
 	add_item->items_counter++;
+	while (getchar() != '\n');
 }
 
 void add_item(promocode* add_item) {
@@ -90,6 +91,7 @@ void add_item(promocode* add_item) {
 	add_item->items[add_item->items_counter].discount = item_discount;
 	printf("\nДобавлен товар %s по цене %d со скидкой %d", item_name, item_price, item_discount);
 	add_item->items_counter++;
+	while (getchar() != '\n');
 }
 
 void add_item(sale* add_item) {
@@ -106,6 +108,7 @@ void add_item(sale* add_item) {
 	add_item->items[add_item->items_counter].discount = item_discount;
 	printf("\nДобавлен товар %s по цене %d со скидкой %d", item_name, item_price, item_discount);
 	add_item->items_counter++;
+	while (getchar() != '\n');
 }
 
 void item_info(item* current_item) {
@@ -131,6 +134,7 @@ void change_item_price(item* current_item) {
 	printf("Введите цену товара ");
 	scanf("%d", &item_price);
 	current_item->price = item_price;
+	while (getchar() != '\n');
 }
 
 void change_item_discount(item* current_item) {
@@ -138,6 +142,7 @@ void change_item_discount(item* current_item) {
 	printf("Введите скидку на товар ");
 	scanf("%d", &item_discount);
 	current_item->price = item_discount;
+	while (getchar() != '\n');
 }
 
 void delete_item(shop* shop_delete_item, int item_to_delete) {
@@ -166,6 +171,7 @@ void change_date_day(date* date_to_change) {
 	printf("Введите день");
 	scanf("%d", &new_day);
 	date_to_change->day = new_day;
+	while (getchar() != '\n');
 }
 
 void change_date_month(date* date_to_change) {
@@ -173,6 +179,7 @@ void change_date_month(date* date_to_change) {
 	printf("Введите месяц");
 	scanf("%d", &new_month);
 	date_to_change->month = new_month;
+	while (getchar() != '\n');
 }
 
 void change_date_year(date* date_to_change) {
@@ -180,6 +187,7 @@ void change_date_year(date* date_to_change) {
 	printf("Введите год");
 	scanf("%d", &new_year);
 	date_to_change->month = new_year;
+	while (getchar() != '\n');
 }
 
 void change_time_hour(timer* time_to_change) {
@@ -187,6 +195,7 @@ void change_time_hour(timer* time_to_change) {
 	printf("Введите час");
 	scanf("%d", &new_hour);
 	time_to_change->hour = new_hour;
+	while (getchar() != '\n');
 }
 
 void change_time_minute(timer* time_to_change) {
@@ -194,6 +203,7 @@ void change_time_minute(timer* time_to_change) {
 	printf("Введите минуту");
 	scanf("%d", &new_minute);
 	time_to_change->minute = new_minute;
+	while (getchar() != '\n');
 }
 
 void change_time_second(timer* time_to_change) {
@@ -201,6 +211,7 @@ void change_time_second(timer* time_to_change) {
 	printf("Введите секунду");
 	scanf("%d", &new_second);
 	time_to_change->second = new_second;
+	while (getchar() != '\n');
 }
 
 void create_promocode(promocode* promocode_cr) {
@@ -218,6 +229,7 @@ void create_promocode(promocode* promocode_cr) {
 	printf("Введите скидку");
 	scanf("%d", &discount);
 	promocode_cr->discount = discount;
+	while (getchar() != '\n');
 }
 
 void promocode_info(promocode* current_promocode) {
@@ -269,6 +281,7 @@ void change_promocode_discount(promocode* promocode_to_change) {
 	int new_discount;
 	scanf("%d", &new_discount);
 	promocode_to_change->discount = new_discount;
+	while (getchar() != '\n');
 }
 
 void delete_promocode(promocode* promocode_to_delete) {
