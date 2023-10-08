@@ -65,14 +65,14 @@ void add_item(shop* add_item) {
 	int item_price, item_discount;
 	printf("¬ведите название товара ");
 	gets_s(item_name, ITEM_NAME_SIZE);
-	*add_item->items[add_item->items_counter].name = *item_name;
+	strcpy((add_item->items[add_item->items_counter].name), item_name);
 	printf("¬ведите цену товара ");
 	scanf("%d", &item_price);
 	add_item->items[add_item->items_counter].price = item_price;
 	printf("¬ведите скидку ");
 	scanf("%d", &item_discount);
 	add_item->items[add_item->items_counter].discount = item_discount;
-	printf("\nƒобавлен товар %s по цене %d со скидкой %d\n", item_name, item_price, item_discount);
+	printf("ƒобавлен товар %s по цене %d со скидкой %d\n", item_name, item_price, item_discount);
 	add_item->items_counter++;
 	while (getchar() != '\n');
 }
@@ -82,14 +82,14 @@ void add_item(promocode* add_item) {
 	int item_price, item_discount;
 	printf("¬ведите название товара ");
 	gets_s(item_name, ITEM_NAME_SIZE);
-	*add_item->items[add_item->items_counter].name = *item_name;
+	strcpy((add_item->items[add_item->items_counter].name), item_name);
 	printf("¬ведите цену товара ");
 	scanf("%d", &item_price);
 	add_item->items[add_item->items_counter].price = item_price;
 	printf("¬ведите скидку ");
 	scanf("%d", &item_discount);
 	add_item->items[add_item->items_counter].discount = item_discount;
-	printf("\nƒобавлен товар %s по цене %d со скидкой %d", item_name, item_price, item_discount);
+	printf("ƒобавлен товар %s по цене %d со скидкой %d\n", item_name, item_price, item_discount);
 	add_item->items_counter++;
 	while (getchar() != '\n');
 }
@@ -99,26 +99,28 @@ void add_item(sale* add_item) {
 	int item_price, item_discount;
 	printf("¬ведите название товара ");
 	gets_s(item_name, ITEM_NAME_SIZE);
-	*add_item->items[add_item->items_counter].name = *item_name;
+	strcpy((add_item->items[add_item->items_counter].name), item_name);
 	printf("¬ведите цену товара ");
 	scanf("%d", &item_price);
 	add_item->items[add_item->items_counter].price = item_price;
 	printf("¬ведите скидку ");
 	scanf("%d", &item_discount);
 	add_item->items[add_item->items_counter].discount = item_discount;
-	printf("\nƒобавлен товар %s по цене %d со скидкой %d", item_name, item_price, item_discount);
+	printf("ƒобавлен товар %s по цене %d со скидкой %d\n", item_name, item_price, item_discount);
 	add_item->items_counter++;
 	while (getchar() != '\n');
 }
 
 void item_info(item* current_item) {
-	printf("%s по цене %d со скидкой %d", current_item->name, current_item->price, current_item->discount);
+	char current_item_name[ITEM_NAME_SIZE];
+	strcpy(current_item_name,  current_item->name);
+	printf("%s по цене %d со скидкой %d \n", current_item_name, current_item->price, current_item->discount);
 }
 
 void shop_info(shop* current_shop) {
-	printf("%s\n", current_shop->name);
+	printf("%s\n", *(current_shop->name));
 	for (int i = 0; i < current_shop->items_counter; i++) {
-		item_info(&(current_shop->items[i]));
+		item_info(&current_shop->items[i]);
 	}
 }
 
@@ -168,7 +170,7 @@ void delete_item(promocode* promocode_delete_item, int item_to_delete) {
 
 void change_date_day(date* date_to_change) {
 	int new_day;
-	printf("¬ведите день");
+	printf("¬ведите день ");
 	scanf("%d", &new_day);
 	date_to_change->day = new_day;
 	while (getchar() != '\n');
@@ -176,7 +178,7 @@ void change_date_day(date* date_to_change) {
 
 void change_date_month(date* date_to_change) {
 	int new_month;
-	printf("¬ведите мес€ц");
+	printf("¬ведите мес€ц ");
 	scanf("%d", &new_month);
 	date_to_change->month = new_month;
 	while (getchar() != '\n');
@@ -184,15 +186,15 @@ void change_date_month(date* date_to_change) {
 
 void change_date_year(date* date_to_change) {
 	int new_year;
-	printf("¬ведите год");
+	printf("¬ведите год ");
 	scanf("%d", &new_year);
-	date_to_change->month = new_year;
+	date_to_change->year = new_year;
 	while (getchar() != '\n');
 }
 
 void change_time_hour(timer* time_to_change) {
 	int new_hour;
-	printf("¬ведите час");
+	printf("¬ведите час ");
 	scanf("%d", &new_hour);
 	time_to_change->hour = new_hour;
 	while (getchar() != '\n');
@@ -200,7 +202,7 @@ void change_time_hour(timer* time_to_change) {
 
 void change_time_minute(timer* time_to_change) {
 	int new_minute;
-	printf("¬ведите минуту");
+	printf("¬ведите минуту ");
 	scanf("%d", &new_minute);
 	time_to_change->minute = new_minute;
 	while (getchar() != '\n');
@@ -208,7 +210,7 @@ void change_time_minute(timer* time_to_change) {
 
 void change_time_second(timer* time_to_change) {
 	int new_second;
-	printf("¬ведите секунду");
+	printf("¬ведите секунду ");
 	scanf("%d", &new_second);
 	time_to_change->second = new_second;
 	while (getchar() != '\n');
@@ -219,44 +221,51 @@ void create_promocode(promocode* promocode_cr) {
 	int discount;
 	printf("¬ведите промокод ");
 	gets_s(promocode, CODE_SIZE);
-	*promocode_cr->code = *promocode;
+	//*promocode_cr->code = *promocode;
+	strcpy(promocode_cr->code, promocode);
 	change_date_day(&(promocode_cr->expire.date));
 	change_date_month(&(promocode_cr->expire.date));
 	change_date_year(&(promocode_cr->expire.date));
 	change_time_second(&(promocode_cr->expire.time));
 	change_time_minute(&(promocode_cr->expire.time));
 	change_time_hour(&(promocode_cr->expire.time));
-	printf("¬ведите скидку");
+	printf("¬ведите скидку ");
 	scanf("%d", &discount);
 	promocode_cr->discount = discount;
 	while (getchar() != '\n');
 }
 
 void promocode_info(promocode* current_promocode) {
-	printf("%s\n", current_promocode->code);
+	char current_promocode_code[CODE_SIZE];
+	strcpy(current_promocode_code, current_promocode->code);
+	puts(current_promocode_code);
 	for (int i = 0; i < current_promocode->items_counter; i++) {
 		item_info(&(current_promocode->items[i]));
 	}
+	printf(" од истечет в %d:%d:%d %d/%d/%d \n", current_promocode->expire.time.hour, current_promocode->expire.time.minute, current_promocode->expire.time.second, current_promocode->expire.date.day, current_promocode->expire.date.month, current_promocode->expire.date.year);
 }
 
 void create_sale(sale* sale_cr) {
 	char sale_text[SALE_TEXT_LENGTH];
 	printf("¬ведите услови€ акции ");
 	gets_s(sale_text, SALE_TEXT_LENGTH);
-	*sale_cr->text = *sale_text;
+	strcpy(sale_cr->text, sale_text);
+	//*sale_cr->text = *sale_text;
 }
 
 void change_sale_text(sale* sale_to_change) {
 	char sale_text[SALE_TEXT_LENGTH];
 	printf("¬ведите услови€ акции ");
 	gets_s(sale_text, SALE_TEXT_LENGTH);
-	*sale_to_change->text = *sale_text;
+	strcpy(sale_to_change->text, sale_text);
+	//*sale_to_change->text = *sale_text;
 }
 
 void sale_info(sale* current_sale) {
-	printf("%s\n", current_sale->text);
+	//printf("%s\n", *(current_sale->text));
+	puts(current_sale->text);
 	for (int i = 0; i < current_sale->items_counter; i++) {
-		item_info(&(current_sale->items[i]));
+		item_info(&current_sale->items[i]);
 	}
 }
 
@@ -270,14 +279,14 @@ void delete_sale(sale* sale_to_delete) {
 }
 
 void change_promocode_code(promocode* promocode_to_change) {
-	printf("¬ведите новый код");
+	printf("¬ведите новый код ");
 	char new_code[CODE_SIZE];
 	gets_s(new_code, CODE_SIZE);
 	*promocode_to_change->code = *new_code;
 }
 
 void change_promocode_discount(promocode* promocode_to_change) {
-	printf("¬ведите новую скидку");
+	printf("¬ведите новую скидку ");
 	int new_discount;
 	scanf("%d", &new_discount);
 	promocode_to_change->discount = new_discount;

@@ -12,12 +12,12 @@ int main()
     sale sales[SALE_COUNT];
     promocode promocodes[PROMOCODE_COUNT];
     create_shop(&(shops[0]));
-    add_item(&(shops[0]));
+    add_item(&shops[0]);
     item_info(&(shops[0].items[0]));
     change_item_name(&(shops[0].items[0]));
     change_item_price(&(shops[0].items[0]));
     change_item_discount(&(shops[0].items[0]));
-    item_info(&(shops[0].items[0]));
+    item_info(&shops[0].items[0]);
     delete_item(&(shops[0]), 0);
     delete_shop(&(shops[0]));
     create_promocode(&promocodes[0]);
