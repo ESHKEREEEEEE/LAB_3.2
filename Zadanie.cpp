@@ -8,11 +8,13 @@
 int main()
 {
     setlocale(LC_ALL, "Rus");
-    shop shops[SHOP_COUNT];
+    //shop shops[SHOP_COUNT];
+    shop* shops;
+    shops = (shop*)calloc(SHOP_COUNT, sizeof(shop));
     sale sales[SALE_COUNT];
     promocode promocodes[PROMOCODE_COUNT];
-    create_shop(&(shops[0]));
-    add_item(&shops[0]);
+    create_shop((shops));
+    add_item(shops);
     item_info(&(shops[0].items[0]));
     change_item_name(&(shops[0].items[0]));
     change_item_price(&(shops[0].items[0]));
